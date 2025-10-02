@@ -41,7 +41,6 @@ def get_all_articles(category_url):
         
         driver = webdriver.Chrome(options=chrome_options)
         driver.get(category_url)
-        # time.sleep(2)
         
         # Click "Xem thêm" đến hết
         while True:

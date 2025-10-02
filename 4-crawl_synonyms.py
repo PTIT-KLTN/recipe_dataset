@@ -18,7 +18,8 @@ print("Model loaded.\n")
 
 def get_synonyms(ingredient_name):
     """Generate 3 synonyms using Qwen"""
-    prompt = f"""Cho từ "{ingredient_name}", hãy liệt kê 3 từ đồng nghĩa hoặc cách gọi khác trong tiếng Việt.
+    prompt = f"""Cho từ "{ingredient_name}", hãy liệt kê 0-3 từ đồng nghĩa hoặc cách gọi khác trong tiếng Việt.
+        Lưu ý: chỉ lấy những từ liên quan đến nguyên liệu của món ăn và có độ liên quan cao.
 
         Ví dụ:
         - bắp -> ngô, trái bắp, bắp ngô
@@ -57,11 +58,11 @@ def get_synonyms(ingredient_name):
 
 def main():
     # Đọc danh sách nguyên liệu
-    with open('/kaggle/input/vietnamese-food-recipe-dataset/unique_ingredients.json', 'r', encoding='utf-8') as f:
+    with open('data/unique_ingredients.json', 'r', encoding='utf-8') as f:
         ingredients = json.load(f)
     
     # Có thể giới hạn range để test hoặc chia nhỏ
-    # ingredients = ingredients[1000:3000]
+    ingredients = ingredients[0:10]
     
     print(f"Generating synonyms for {len(ingredients)} ingredients...\n")
     
